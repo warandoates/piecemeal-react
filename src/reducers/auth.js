@@ -1,6 +1,12 @@
 //response reducer.
-
-const auth = (state = { client: {} }, action) => {
+const INITIAL_STATE = {
+  client: {
+    email: '',
+    image_url: '',
+    token: ''
+  }
+};
+const auth = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'REGISTER_PENDING':
         console.log('REGISTER_PENDING');
