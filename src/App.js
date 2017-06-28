@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import Login from './components/login/Login';
 import Landing from './components/landing/Landing';
 import Notifications from './components/menus/Notifications';
+import RecipeView from './components/recipe/RecipeView';
 
 class App extends Component {
 
@@ -35,7 +36,7 @@ class App extends Component {
               <Sidebar
                 as={Menu}
                 animation='scale down'
-                width='small'
+                width='tiny'
                 direction='left'
                 visible={visible}
                 icon='labeled'
@@ -81,9 +82,10 @@ class App extends Component {
                 <Segment basic>
                   {/* <Header as='h3'>Application Content</Header>
                   <Image src='/assets/images/wireframe/paragraph.png' /> */}
-                  <Landing />
+                  {/* <Landing /> */}
                   {/* <SignUp /> */}
                   {/* <Login /> */}
+                  <RecipeView />
                 </Segment>
               </Sidebar.Pusher>
             </Sidebar.Pushable>
