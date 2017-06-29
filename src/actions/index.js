@@ -1,1 +1,2 @@
-import * as auth from './auth';
+export * from './auth';
+export * from './client';
