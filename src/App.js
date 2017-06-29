@@ -4,9 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Route
+  Route, Link
 } from 'react-router-dom';
-import SignUp from './components/SignUp';
 import Login from './components/login/Login';
 import Landing from './components/landing/Landing';
 
@@ -42,9 +41,12 @@ class App extends Component {
                   <Icon name='home' />
                   Home
                 </Menu.Item>
-                <Menu.Item name='gamepad'>
-                  <Icon name='gamepad' />
-                  Games
+                <Menu.Item name='Login'>
+                  {/* <Icon name='gamepad' /> */}
+                  <Icon name='gamepad'>
+                    <Link to="/Login"></Link>
+                  </Icon>
+                  Login
                 </Menu.Item>
                 <Menu.Item name='camera'>
                   <Icon name='camera' />
@@ -55,18 +57,14 @@ class App extends Component {
                 <Segment basic>
                   {/* <Header as='h3'>Application Content</Header>
                   <Image src='/assets/images/wireframe/paragraph.png' /> */}
-                  <Landing />
+                  {/* <Landing /> */}
                   {/* <SignUp /> */}
                   {/* <Login /> */}
+                  <Route exact path="/" component={Landing} />
+                  <Route path="/Login" component={Login} />
                 </Segment>
               </Sidebar.Pusher>
             </Sidebar.Pushable>
-            {/* <Route exact path="/" component={IndexPage} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/exercises" component={Exercises} />
-            <Route path="/routines" component={Routines} />
-            <Route path="/signup" component={FormExampleForm} />
-            <Route path="/login" component={LoginForm} /> */}
           </div>
         </Router>
       </div>
