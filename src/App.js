@@ -26,12 +26,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
+          <Button active={this.state.visible} size='huge' icon floated='left' onClick={this.toggleVisibility}>
+            <Icon name='sidebar' />
+          </Button>
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
         <Router>
           <div>
-            <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
             <Sidebar.Pushable as={Segment}>
               <Sidebar
                 as={Menu}
@@ -84,7 +86,7 @@ class App extends Component {
                   <Image src='/assets/images/wireframe/paragraph.png' /> */}
                   {/* <Landing /> */}
                   {/* <SignUp /> */}
-                  {/* <Login /> */}
+                  <Login />
                   <RecipeView />
                 </Segment>
               </Sidebar.Pusher>

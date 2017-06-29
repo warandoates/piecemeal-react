@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Item, List } from 'semantic-ui-react';
+import { Checkbox, Icon, Image, Item, List } from 'semantic-ui-react';
 import './RecipeIngredients.css';
 
 const RecipeIngredients = (props) => (
@@ -7,10 +7,16 @@ const RecipeIngredients = (props) => (
     {/* <a>Ingredients</a> */}
     {props.ingredients.map(i => {
         // return <List.Item>{i.amount}  {i.name}</List.Item>
+        let icon;
+        if(props.restrictions.indexOf(i.id) === -1) {
+          icon = <Icon circular color='teal' name='users' />
+        } else {
+          icon = <Icon circular color='teal' name='home' />
+        }
         return (
           <div>
-            <Item.Group>
               <Item>
+                <Checkbox toggle />
                 <Item.Image avatar size='tiny' src={i.image_url} />
 
                 <Item.Content>
@@ -20,9 +26,9 @@ const RecipeIngredients = (props) => (
                     {i.description}
                   </Item.Description>
                   {/* <Item.Extra>Additional Details</Item.Extra> */}
+                  {icon}
                 </Item.Content>
               </Item>
-            </Item.Group>
             {/* <Image avatar src={i.image_url} />
             <List.Content>
               <List.Header as='a'>{i.name}</List.Header>
