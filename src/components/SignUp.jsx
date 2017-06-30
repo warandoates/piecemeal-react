@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 // import { bindActionCreators } from 'redux';
 import { Button, Checkbox, Form, Input, Loader, Segment } from 'semantic-ui-react';
-import { registerClient } from '../actions/auth';
+import { registerClient } from '../actions';
 import './SignUp.css';
 
 
