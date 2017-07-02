@@ -43,35 +43,33 @@ class App extends Component {
                 icon='labeled'
                 vertical
               >
-                <Menu.Item name='avatar'>
+                {this.props.client.length > 0 && <Menu.Item name='avatar'>
                   <Image src={this.props.client.image_url} size='tiny' avatar shape='circular' />
-                </Menu.Item>
+                </Menu.Item>}
                 <Menu.Item name='email'>
                   <span>{this.props.client.email}</span>
                 </Menu.Item>
-                <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
+                {this.props.client.length > 0 && <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
                   <Label color='teal'>1</Label>
                   Inbox
-                </Menu.Item>
+                </Menu.Item>}
 
-                <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
+                {this.props.client.length > 0 && <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
                   <Label>51</Label>
                   Spam
-                </Menu.Item>
+                </Menu.Item>}
 
-                <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
+                {this.props.client.length > 0 && <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
                   <Label>1</Label>
                   Updates
-                </Menu.Item>
-                <Menu.Item name='home'>
+                </Menu.Item>}
+
+                <Menu.Item name='home' as={Link} to='/'>
                   <Icon name='home' />
                   Home
                 </Menu.Item>
-                <Menu.Item name='Login'>
-                  {/* <Icon name='gamepad' /> */}
-                  <Icon name='gamepad'>
-                    <Link to="/Login"></Link>
-                  </Icon>
+                <Menu.Item name='Login' as={Link} to='/Login'>
+                  <Icon name='sign in' />
                   Login
                 </Menu.Item>
                 <Menu.Item name='camera'>
@@ -81,11 +79,6 @@ class App extends Component {
               </Sidebar>
               <Sidebar.Pusher>
                 <Segment basic>
-                  {/* <Header as='h3'>Application Content</Header>
-                  <Image src='/assets/images/wireframe/paragraph.png' /> */}
-                  {/* <Landing /> */}
-                  {/* <SignUp /> */}
-                  {/* <Login /> */}
                   <Route exact path="/" component={Landing} />
                   <Route path="/Login" component={Login} />
                   <Route path="/recipe" component={RecipeView} />
