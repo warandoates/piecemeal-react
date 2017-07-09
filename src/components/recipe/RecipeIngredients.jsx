@@ -4,9 +4,7 @@ import './RecipeIngredients.css';
 
 const RecipeIngredients = (props) => (
   <List id='leest' ordered relaxed>
-    {/* <a>Ingredients</a> */}
     {props.ingredients.map(i => {
-        // return <List.Item>{i.amount}  {i.name}</List.Item>
         let icon;
         if(props.restrictions.indexOf(i.id) === -1) {
           icon = <Icon circular color='teal' name='users' />
@@ -29,12 +27,6 @@ const RecipeIngredients = (props) => (
                   {icon}
                 </Item.Content>
               </Item>
-            {/* <Image avatar src={i.image_url} />
-            <List.Content>
-              <List.Header as='a'>{i.name}</List.Header>
-              <List.Description>{i.description}
-              </List.Description>
-            </List.Content> */}
           </div>
       )
     })}

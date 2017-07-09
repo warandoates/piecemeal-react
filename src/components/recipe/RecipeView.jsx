@@ -64,8 +64,8 @@ class RecipeView extends React.Component {
             <RecipeHeader recipe={this.state.recipe} />
             <Segment>
               <Item.Group divided>
-              <RecipeIngredients ingredients={this.state.recipe.ingredients} restrictions={this.props.client.restrictions || []} />
-            </Item.Group>
+                <RecipeIngredients ingredients={this.state.recipe.ingredients} restrictions={this.props.client.restrictions || []} />
+              </Item.Group>
             </Segment>
 
             <Segment>
