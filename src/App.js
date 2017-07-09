@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router,
   Route, Link
 } from 'react-router-dom';
-import Login from './components/login/Login';
+import Login from './components/login/Login'
 import Landing from './components/landing/Landing';
 import Notifications from './components/menus/Notifications';
 import RecipeView from './components/recipe/RecipeView';
@@ -23,8 +23,8 @@ class App extends Component {
   render() {
     const { activeItem, visible } = this.state
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className="App" >
+        <div className="App-header" style={{paddingBottom: 150}}>
           <Button active={this.state.visible} size='huge' icon floated='left' onClick={this.toggleVisibility}>
             <Icon name='sidebar' />
           </Button>
@@ -86,6 +86,8 @@ class App extends Component {
               </Sidebar.Pusher>
             </Sidebar.Pushable>
           </div>
+          {/* <div> */}
+          {/* </div> */}
         </Router>
       </div>
     );
