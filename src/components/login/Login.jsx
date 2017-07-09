@@ -65,7 +65,7 @@ class Login extends React.Component {
             onChange={this.handleInputChange} />
         </Form.Field>
         <Button type='submit'>Submit</Button>
-        <div class="ui error message"></div>
+        <div className="ui error message"></div>
       </Form>
     </div>
     )
