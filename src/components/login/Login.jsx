@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 // import { bindActionCreators } from 'redux';
-import { Button, Checkbox, Form, Input, Loader, Segment } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Grid, Input, Loader, Segment } from 'semantic-ui-react';
 import { authorizeClient } from '../../actions/auth';
 
 
@@ -41,33 +41,33 @@ class Login extends React.Component {
     console.log('state:', this.state);
     console.log('props:', this.props);
     return (
-      <div>
-    <Loader active={this.props.isFetching} />
-      <Form disabled={true} onSubmit={this.handleSubmit}>
-        <Form.Field>
-          {/* <label>Email</label> */}
-          <input
-            type='email'
-            required
-            disabled={this.props.isFetching}
-            name='email'
-            placeholder='Email'
-            onChange={this.handleInputChange} />
-        </Form.Field>
-        <Form.Field>
-          {/* <label>Password</label> */}
-          <input
-            type='password'
-            required
-            disabled={this.props.isFetching}
-            name='password'
-            placeholder='Password'
-            onChange={this.handleInputChange} />
-        </Form.Field>
-        <Button type='submit'>Submit</Button>
-        <div className="ui error message"></div>
-      </Form>
-    </div>
+      <div height='100%'>
+        <Loader active={this.props.isFetching} />
+        <Form disabled={true} onSubmit={this.handleSubmit}>
+          <Form.Field>
+            {/* <label>Email</label> */}
+            <input
+              type='email'
+              required
+              disabled={this.props.isFetching}
+              name='email'
+              placeholder='Email'
+              onChange={this.handleInputChange} />
+          </Form.Field>
+          <Form.Field>
+            {/* <label>Password</label> */}
+            <input
+              type='password'
+              required
+              disabled={this.props.isFetching}
+              name='password'
+              placeholder='Password'
+              onChange={this.handleInputChange} />
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+          <div className="ui error message"></div>
+        </Form>
+      </div>
     )
   };
 }
