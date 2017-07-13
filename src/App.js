@@ -11,6 +11,7 @@ import Login from './components/login/Login'
 import Landing from './components/landing/Landing';
 import Notifications from './components/menus/Notifications';
 import RecipeView from './components/recipe/RecipeView';
+import Ingredients from './components/ingredients/ingredients';
 
 class App extends Component {
 
@@ -72,9 +73,9 @@ class App extends Component {
                   <Icon name='sign in' />
                   Login
                 </Menu.Item>
-                <Menu.Item name='camera'>
+                <Menu.Item name='camera' as={Link} to='./ingredients'>
                   <Icon name='camera' />
-                  Channels
+                  Ingredients
                 </Menu.Item>
               </Sidebar>
               <Sidebar.Pusher>
@@ -82,6 +83,7 @@ class App extends Component {
                   <Route exact path="/" component={Landing} />
                   <Route path="/Login" component={Login} />
                   <Route path="/recipe" component={RecipeView} />
+                  <Route path="/ingredients" component={Ingredients} />
                 </Segment>
               </Sidebar.Pusher>
             </Sidebar.Pushable>
