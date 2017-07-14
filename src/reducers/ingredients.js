@@ -1,18 +1,31 @@
 const INITIAL_STATE = {
-  ingredients: [{}],
+  allIngredients: [],
+  selectedIngredient: {},
   response: {},
-  success: false,
   isFetching: false,
+  success: false,
+  error: null,
 };
 
 const ingredients = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'GET_INGREDIENT_RESULTS_REJECTED':
-      return { ...state, isFetching: false, error: 'Unable To Add Ingredient' };
-    case 'GET_INGREDIENT_RESULTS_PENDING':
+    case 'GET_ALL_INGREDIENTS_PENDING':
       return { ...state, isFetching: true };
-    case 'GET_INGREDIENT_RESULTS_FULFILLED':
-      return { ...state, ingredients: action.payload.ingredients, isFetching: false };
+    case 'GET_ALL_INGREDIENTS_REJECTED':
+      return {
+        ...state,
+        isFetching: false,
+        error: 'Unable To fetch Ingredient',
+      };
+    case 'GET_ALL_INGREDIENTS_FULFILLED':
+      return {
+        ...state,
+        isFetching: false,
+        allIngredients: action.payload.ingredients,
+        success: true,
+      };
+    case 'GET_INGREDIENT_FULFILLED':
+      return { ...state, selectedIngredient: action.payload };
     default:
       return state;
   }
