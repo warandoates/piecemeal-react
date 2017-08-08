@@ -12,6 +12,7 @@ import Landing from './components/landing/Landing';
 import Notifications from './components/menus/Notifications';
 import RecipeView from './components/recipe/RecipeView';
 import Dashboard from './components/client/Dashboard';
+import Ingredients from './components/ingredients/Ingredients';
 
 class App extends Component {
 
@@ -92,10 +93,6 @@ class App extends Component {
                   <Icon name='log out' />
                   Logout
                 </Menu.Item>}
-                <Menu.Item name='camera'>
-                  <Icon name='camera' />
-                  Channels
-                </Menu.Item>
               </Sidebar>
               <Sidebar.Pusher height="100%">
                 <Segment basic>
@@ -103,6 +100,7 @@ class App extends Component {
                   <Route path="/Login" component={Login} />
                   <Route path="/Recipe" component={RecipeView} />
                   <Route path="/Dashboard" component={Dashboard} />
+                  <Route path="/Ingredients" component={Ingredients} />
                 </Segment>
               </Sidebar.Pusher>
             </Sidebar.Pushable>
