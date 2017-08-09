@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Input, Header, Label } from 'semantic-ui-react'
+import { Grid, Sidebar, Segment, Button, Menu, Image, Icon, Input, Header, Label } from 'semantic-ui-react'
 import logo from './logo.svg';
 import './App.css';
 import {
@@ -11,7 +11,8 @@ import Login from './components/login/Login'
 import Landing from './components/landing/Landing';
 import Notifications from './components/menus/Notifications';
 import RecipeView from './components/recipe/RecipeView';
-import Ingredients from './components/ingredients/ingredients';
+import Dashboard from './components/client/Dashboard';
+import Ingredients from './components/ingredients/Ingredients';
 
 class App extends Component {
 
@@ -33,8 +34,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <Router>
-          <div>
-            <Sidebar.Pushable as={Segment}>
+            <Sidebar.Pushable as={Segment} height='100%'>
               <Sidebar
                 as={Menu}
                 animation='scale down'
@@ -43,53 +43,67 @@ class App extends Component {
                 visible={visible}
                 icon='labeled'
                 vertical
+                height='100%'
               >
-                {this.props.client.length > 0 && <Menu.Item name='avatar'>
+                {this.props.client.email && <Menu.Item name='avatar'>
                   <Image src={this.props.client.image_url} size='tiny' avatar shape='circular' />
                 </Menu.Item>}
                 <Menu.Item name='email'>
                   <span>{this.props.client.email}</span>
                 </Menu.Item>
-                {this.props.client.length > 0 && <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
+                {this.props.client.email &&
+                  <Menu.Item
+                    as={Link} to='/Recipe'
+                    name='recipes'
+                    active={activeItem === 'recipes'}
+                    onClick={this.handleItemClick}>
+                  <Label color='teal'>1</Label>
+                  Recipes
+                </Menu.Item>}
+
+                {this.props.client.email && <Menu.Item name='ingredients' active={activeItem === 'ingredients'} onClick={this.handleItemClick}>
+                  <Label color='teal'>1</Label>
+                  Ingredients
+                </Menu.Item>}
+
+                {this.props.client.email && <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
                   <Label color='teal'>1</Label>
                   Inbox
                 </Menu.Item>}
 
-                {this.props.client.length > 0 && <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
+                {this.props.client.email && <Menu.Item name='spam' active={activeItem === 'following'} onClick={this.handleItemClick}>
                   <Label>51</Label>
-                  Spam
+                  Following
                 </Menu.Item>}
 
-                {this.props.client.length > 0 && <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
+                {this.props.client.email && <Menu.Item name='updates' active={activeItem === 'followers'} onClick={this.handleItemClick}>
                   <Label>1</Label>
-                  Updates
+                  Followers
                 </Menu.Item>}
 
-                <Menu.Item name='home' as={Link} to='/'>
+                <Menu.Item name='home' as={Link} to='/Dashboard'>
                   <Icon name='home' />
                   Home
                 </Menu.Item>
-                <Menu.Item name='Login' as={Link} to='/Login'>
+                {!this.props.client.email && <Menu.Item name='Login' as={Link} to='/Login'>
                   <Icon name='sign in' />
                   Login
-                </Menu.Item>
-                <Menu.Item name='camera' as={Link} to='./ingredients'>
-                  <Icon name='camera' />
-                  Ingredients
-                </Menu.Item>
+                </Menu.Item>}
+                {this.props.client.email && <Menu.Item name='Logout' as={Link} to='/Logout'>
+                  <Icon name='log out' />
+                  Logout
+                </Menu.Item>}
               </Sidebar>
-              <Sidebar.Pusher>
+              <Sidebar.Pusher height="100%">
                 <Segment basic>
-                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/" component={Dashboard} />
                   <Route path="/Login" component={Login} />
-                  <Route path="/recipe" component={RecipeView} />
-                  <Route path="/ingredients" component={Ingredients} />
+                  <Route path="/Recipe" component={RecipeView} />
+                  <Route path="/Dashboard" component={Dashboard} />
+                  <Route path="/Ingredients" component={Ingredients} />
                 </Segment>
               </Sidebar.Pusher>
             </Sidebar.Pushable>
-          </div>
-          {/* <div> */}
-          {/* </div> */}
         </Router>
       </div>
     );

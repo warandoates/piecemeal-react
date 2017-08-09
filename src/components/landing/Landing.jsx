@@ -2,12 +2,14 @@ import React from 'react'
 import { Grid, Image, Label } from 'semantic-ui-react'
 import SignUp from '../SignUp';
 import Login from '../login/Login';
+import Restrictions from '../client/Restrictions';
 
 const Landing = () => (
   <Grid columns={3}>
     <Grid.Row>
       <Grid.Column width={16}>
         {/* <Image src='/assets/images/wireframe/paragraph.png' /> */}
+        <Restrictions />
         <Label>SignUp</Label>
       </Grid.Column>
     </Grid.Row>
