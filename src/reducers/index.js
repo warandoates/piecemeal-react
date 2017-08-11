@@ -5,7 +5,7 @@ import auth from './auth';
 import client from './client';
 import ingredients from './ingredients';
 
-const reactApp = combineReducers({
+const rootReducer = combineReducers({
   // import reducers and put them here
   // exercises,
   // routines,
@@ -14,4 +14,4 @@ const reactApp = combineReducers({
   ingredients,
 });
 
-export default reactApp;
+export default rootReducer;
