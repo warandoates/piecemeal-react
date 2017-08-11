@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image, Card } from 'semantic-ui-react';
 import { getAllIngredients } from '../../actions/ingredients';
 import rootReducer from '../../reducers';
 
@@ -10,10 +10,9 @@ export class IngredientView extends Component {
     return this.props.getAllIngredients();
   }
 
-  shuffleArray = (array) => {
-    let shuffledArray = array.slice();
+  shuffleArray(array) {
+    const shuffledArray = array.slice();
     let len = shuffledArray.length - 1;
-    let result = [];
     let randomInt;
     let temp;
 
@@ -22,28 +21,28 @@ export class IngredientView extends Component {
       temp = shuffledArray[len];
       shuffledArray[len] = shuffledArray[randomInt];
       shuffledArray[randomInt] = temp;
-      len--;
+      len -= 1;
     }
-    return shuffledArray
+    return shuffledArray;
   }
 
-  ingredientSplit = (arr, num) => {
-    let updatedArr = this.shuffleArray(arr);
-    let rest = updatedArr.length % num;
+  ingredientSplit(arr, num) {
+    const updatedArr = this.shuffleArray(arr);
+    const rest = updatedArr.length % num;
     let restUsed = rest;
-    let partLength = Math.floor(updatedArr.length / num);
-    let result = [];
-    for (var i = 0; i < updatedArr.length; i += partLength) {
+    const partLength = Math.floor(updatedArr.length / num);
+    const result = [];
+    for (let i = 0; i < updatedArr.length; i += partLength) {
       let end = partLength + i;
       let add = false;
       if (rest !== 0 && restUsed) {
-        end++;
-        restUsed--;
+        end += 1;
+        restUsed -= 1;
         add = true;
       }
       result.push(updatedArr.slice(i, end));
       if (add) {
-        i++;
+        i += 1;
       }
     }
     return result;
@@ -57,27 +56,57 @@ export class IngredientView extends Component {
       <Grid doubling columns={5}>
     <Grid.Column>
       {ingredients.allIngredients.length > 0 && usefulArray[0].map(item =>
-        <div key={item.id}>{item.name}</div>
+        <Card
+          key={item.id}
+          header={item.name}
+          image={item.image_url}
+          description={item.description}
+        >
+        </Card>
       )}
     </Grid.Column>
     <Grid.Column>
       {ingredients.allIngredients.length > 1 && usefulArray[1].map(item =>
-        <div key={item.id}>{item.name}</div>
+        <Card
+          key={item.id}
+          header={item.name}
+          image={item.image_url}
+          description={item.description}
+        >
+        </Card>
       )}
     </Grid.Column>
     <Grid.Column>
       {ingredients.allIngredients.length > 2 && usefulArray[2].map(item =>
-        <div key={item.id}>{item.name}</div>
+        <Card
+          key={item.id}
+          header={item.name}
+          image={item.image_url}
+          description={item.description}
+        >
+        </Card>
       )}
     </Grid.Column>
     <Grid.Column>
       {ingredients.allIngredients.length > 3 && usefulArray[3].map(item =>
-        <div key={item.id}>{item.name}</div>
+        <Card
+          key={item.id}
+          header={item.name}
+          image={item.image_url}
+          description={item.description}
+        >
+        </Card>
       )}
     </Grid.Column>
     <Grid.Column>
       {ingredients.allIngredients.length > 4 && usefulArray[4].map(item =>
-        <div key={item.id}>{item.name}</div>
+        <Card
+          key={item.id}
+          header={item.name}
+          image={item.image_url}
+          description={item.description}
+        >
+        </Card>
       )}
     </Grid.Column>
   </Grid>
