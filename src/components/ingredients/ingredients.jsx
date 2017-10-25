@@ -51,20 +51,21 @@ export class IngredientView extends Component {
   render() {
     const { ingredients } = this.props;
     // console.log('this is ingredient', this.props);
-    let usefulArray = this.ingredientSplit(ingredients.allIngredients, 5);
+    const usefulArray = this.ingredientSplit(ingredients.allIngredients, 5);
     return (
       <Grid doubling columns={5}>
-    <Grid.Column>
-      {ingredients.allIngredients.length > 0 && usefulArray[0].map(item =>
-        <Card
-          key={item.id}
-          header={item.name}
-          image={item.image_url}
-          description={item.description}
-        >
-        </Card>
-      )}
-    </Grid.Column>
+        <Grid.Column>
+          {ingredients.allIngredients.length > 0 && usefulArray[0].map(item =>
+            <Card
+              key={item.id}
+              header={item.name}
+              // image={item.image_url}
+              description={item.description}
+            >
+              <Image src={item.image_url} />
+            </Card>
+          )}
+        </Grid.Column>
     <Grid.Column>
       {ingredients.allIngredients.length > 1 && usefulArray[1].map(item =>
         <Card

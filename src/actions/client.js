@@ -15,20 +15,14 @@ export const fetchClient = (clientId, token) => {
   }
 }
 
-function getClient(
-  clientId,
-  token
-) {
+function getClient(clientId,token) {
     return fetch(`${API_URL}/api/v1/clients/${clientId}`, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'token': token
-          }
-      })
-      .then((res) => {
-         return res.json();
-      });
-
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': token
+      }
+    })
+    .then(res => res.json());
 }

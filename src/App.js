@@ -31,10 +31,10 @@ class App extends Component {
             <Icon name='sidebar' />
           </Button>
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Piecemeal (in the works)</h2>
         </div>
         <Router>
-            <Sidebar.Pushable as={Segment} height='100%'>
+            <Sidebar.Pushable  style={styles.appStyle} as={Segment} height='100%'>
               <Sidebar
                 as={Menu}
                 animation='scale down'
@@ -107,6 +107,20 @@ class App extends Component {
         </Router>
       </div>
     );
+  }
+}
+
+const styles = {
+  appStyle: {
+    backgroundColor: '#4286f4',
+ // width: '900px',
+ // height: '140px',
+ border: '0px',
+ borderRadius: '15px',
+ background: 'rgba(0,0,0,0.1)',
+ // opacity: .2,
+ margin: '0px 0px 10px 0px',
+ padding: '10px'
   }
 }
 
